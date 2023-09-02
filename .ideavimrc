@@ -1,0 +1,92 @@
+set number relativenumber
+set idearefactormode=keep
+set ideajoin
+set cursor-line
+set cursor-column
+set surround
+set easymotion
+set ignorecase
+set highlightedyank
+let mapleader = " "
+let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+
+
+noremap <Esc> <nop>
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+" Shortcut for escape
+imap jj <Esc>
+imap jk <Esc>
+
+nnoremap <C-j> :m +1<CR>
+
+"vertical nav"
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+xnoremap p P
+
+" When in normal mode and I hit Enter,
+" then save file please
+nmap <CR> :action ReformatCode<CR> :write<CR>
+nnoremap <Leader>F  :action ReformatCode<CR> :write<CR>
+nmap <leader>fs :action FileStructurePopup<CR>
+
+" Greatest remap EVER!!
+" Let me explain, this remap while in visiual mode
+" will delete what is currently highlighted and replace it
+" with what is in the register BUT it will YANK (delete) it
+" to a VOID register. Meaning I still have what I originally had
+" when I pasted. I don't loose the previous thing I YANKED!
+
+vnoremap <leader>p "_dP
+"Coding Formating
+" ===============
+nnoremap <leader>cf :action ReformatCode<CR>
+" system clipboard
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+" select whole file
+noremap <leader> Y gg "+yG
+
+" scrolling
+nmap <leader>d <C-d>
+nmap <leader>u <C-u>
+vmap <leader>d <C-d>
+vmap <leader>u <C-u>
+
+"Quick window navigation
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+" actions
+nmap <leader>h <action>(PreviousTab)
+nmap <leader>l <action>(NextTab)
+nmap <leader>bd <action>(CloseEditor)
+nmap <leader>i <action>(Generate)
+nmap <leader>m <action>(Git.Menu)
+nmap <leader>s <action>(QuickChangeScheme)
+nmap <leader>/ <action>(ShowErrorDescription)
+nmap <leader>e <action>(GotoNextError)
+nnoremap <leader><leader> <C-Tab>
+
+set NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+nmap <leader>pf :NERDTreeToggle<CR>
+nmap <leader>pt :NERDTreeFind<CR>
